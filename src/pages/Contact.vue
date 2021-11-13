@@ -37,6 +37,7 @@
                   class="form-control"
                   placeholder="Name"
                   id="name"
+                  v-model="form.name"
                   required
                   data-validation-required-message="Please enter your name."
                 />
@@ -51,6 +52,7 @@
                   class="form-control"
                   placeholder="Email Address"
                   id="email"
+                  v-model="form.email"
                   required
                   data-validation-required-message="Please enter your email address."
                 />
@@ -67,6 +69,7 @@
                   class="form-control"
                   placeholder="Phone Number"
                   id="phone"
+                  v-model="form.phone"
                   required
                   data-validation-required-message="Please enter your phone number."
                 />
@@ -81,6 +84,7 @@
                   class="form-control"
                   placeholder="Message"
                   id="message"
+                  v-model="form.message"
                   required
                   data-validation-required-message="Please enter a message."
                 ></textarea>
@@ -93,6 +97,7 @@
               type="submit"
               class="btn btn-primary"
               id="sendMessageButton"
+              @click.prevent="onSubmit"
             >
               Send
             </button>
@@ -104,8 +109,33 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "ContactPage",
+  data () {
+    return {
+      form: {
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      }
+    }
+  },
+  methods: {
+    async onSubmit () {
+      try {
+        await axios({
+          method: 'POST',
+          url: GRIDSOME_API_URL + '/contacts',
+          data: this.form
+        })
+        window.alert('请求成功')
+      } catch (err) {
+        window.alert('请求失败')
+      }
+    }
+  }
 };
 </script>
 
