@@ -4,6 +4,8 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const apiURL = 'http://106.75.118.32:1337'
+
 module.exports = {
   siteName: 'Gridsome',
   // 使用本地的md文件
@@ -18,7 +20,7 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL: process.env.GRIDSOME_API_URL,
+        apiURL: apiURL,
         queryLimit: 1000, // Defaults to 100
         contentTypes: ['posts', 'tags'],
         singleTypes: ['general'],
