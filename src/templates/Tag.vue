@@ -3,7 +3,7 @@
     <h1>{{ $page.tag.title }}</h1>
     <ul>
       <li v-for="post in $page.tag.posts" :key="post.id">
-        {{  }}
+        {{ post.title }}
       </li>
     </ul>
   </div>

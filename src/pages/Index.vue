@@ -29,7 +29,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
 
             <div class="post-preview" v-for="edge in $page.posts.edges" :key="edge.node.id">
-              <g-link :to="'./post/' + edge.node.id">
+              <g-link :to="'/post/' + edge.node.id">
                 <h2 class="post-title">
                   {{ edge.node.title }}
                 </h2>
